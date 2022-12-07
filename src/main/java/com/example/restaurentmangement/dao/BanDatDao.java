@@ -103,13 +103,13 @@ public class BanDatDao extends Dao {
         Calendar calendar2 = Calendar.getInstance();
         calendar2.set(Calendar.HOUR_OF_DAY, 24);
         calendar2.setTime(lst.get(i).getThoiGianDat());
-        Integer t1 = calendar1.get(Calendar.HOUR) * 60 + calendar1.get(Calendar.MINUTE);
-        Integer t2 = calendar2.get(Calendar.HOUR) * 60 + calendar2.get(Calendar.MINUTE);
-        if (i > 0 && calendar2.after(calendar1)) {//Nếu thời gian đặt nằm giữa hai khoảng đã đặt
+        Integer t1 = calendar1.get(Calendar.HOUR_OF_DAY) * 60 + calendar1.get(Calendar.MINUTE);
+        Integer t2 = calendar2.get(Calendar.HOUR_OF_DAY) * 60 + calendar2.get(Calendar.MINUTE);
+        if (i > 1 && calendar2.after(calendar1)) {//Nếu thời gian đặt nằm giữa hai khoảng đã đặt
             Calendar calendar3 = Calendar.getInstance();
             calendar3.set(Calendar.HOUR_OF_DAY, 24);
             calendar3.setTime(lst.get(i - 1).getThoiGianDat());
-            Integer t3 = calendar3.get(Calendar.HOUR) * 60 + calendar3.get(Calendar.MINUTE);
+            Integer t3 = calendar3.get(Calendar.HOUR_OF_DAY) * 60 + calendar3.get(Calendar.MINUTE);
             if ((t1 - t2) >= DEFAULT_DATE_RANGE && (t2 - t3) >= DEFAULT_DATE_RANGE) {
                 return true;
             }
@@ -122,7 +122,7 @@ public class BanDatDao extends Dao {
             Calendar calendar3 = Calendar.getInstance();
             calendar3.set(Calendar.HOUR_OF_DAY, 24);
             calendar3.setTime(lst.get(lst.size() - 1).getThoiGianDat());
-            Integer t3 = calendar3.get(Calendar.HOUR) * 60 + calendar3.get(Calendar.MINUTE);
+            Integer t3 = calendar3.get(Calendar.HOUR_OF_DAY) * 60 + calendar3.get(Calendar.MINUTE);
             if (Math.abs(t1 - t3) >= DEFAULT_DATE_RANGE) {
                 return true;
             }

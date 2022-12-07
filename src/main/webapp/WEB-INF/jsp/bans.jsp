@@ -1,4 +1,5 @@
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="com.example.restaurentmangement.dao.BanDao" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
@@ -76,7 +77,9 @@
                             ${ban.getThoiGianDat1()}
                     </td>
                     <td >
+                        <c:if test="${ban.tenKH == null}">
                         <button><a href="/khach-hangs/${ban.banId}">Đặt</a></button>
+                        </c:if>
                         <c:if test="${ban.trangThai == 1}">
                             <button>Thanh toán</button>
                         </c:if>
